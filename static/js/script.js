@@ -36,7 +36,7 @@ function removeAllChildNodes(parent) {
 }
 
 function hideAllChildElements(parent){
-    console.log(typeof(parent.firstChild));
+
     while(parent.firstChild.display !="none"){
         parent.firstChild.display="none";
     }
@@ -62,7 +62,7 @@ chooseBotValue=()=>{
 }
 
 decideWinner=(yourChoice, botChoice)=>{
-    console.log(yourChoice)
+
      let rps={
         'rock':{'scissors':1, 'rock':0.5, 'paper':0},
         'paper':{'rock':1, 'paper': 0.5, 'scissors': 0},
@@ -106,11 +106,12 @@ rps_frontend=(humanImage,botChoice, finalMessage, parentDiv)=> {
     messageDiv.innerText=finalMessage.message;
     messageDiv.style.fontSize="26px"
     messageDiv.style.fontWeight=900
-    console.log(messageDiv)
-    console.log(parentDiv)
+    
     humanDiv.appendChild(humanImg);
     botDiv.appendChild(botImage); 
     humanImg.style.width="150px"
+    humanImg.style.height="150px"
+    botImage.style.width="150px"
     botImage.style.width="150px"
 
     parentDiv.appendChild(humanDiv);
@@ -120,7 +121,7 @@ rps_frontend=(humanImage,botChoice, finalMessage, parentDiv)=> {
 }
 
 let all_buttons= document.getElementsByTagName('button');
-console.log(`allButtons:${all_buttons}`)
+
 let copyButtons = []
 
 for (let i=0;i< all_buttons.length; i++){
@@ -128,7 +129,7 @@ for (let i=0;i< all_buttons.length; i++){
 }
 
 buttonColorChange=(buttonValue)=>{
-    console.log(buttonValue.value)
+
     if (buttonValue.value =='red'){
         buttonsRed();
     }
@@ -162,7 +163,7 @@ buttonsGreen=()=>{
 
 buttonsRandom=()=>{
     buttonOptions=['btn-primary', 'btn-success', 'btn-danger', 'btn-warning'];
-    console.log(buttonOptions)
+    
     for (let item of all_buttons){
         item.classList.remove(item.classList[1]);
         item.classList.add(buttonOptions[Math.floor(Math.random()*4)]);
@@ -172,7 +173,7 @@ buttonsRandom=()=>{
 buttonAllReset=()=>{
     for (let i=0; i<all_buttons.length; i++){
         all_buttons[i].classList.remove(all_buttons[i].classList[1]);
-        console.log(all_buttons[i].classList)
+ 
         all_buttons[i].classList.add(copyButtons[i]);
     }
 }
@@ -237,7 +238,7 @@ function removeImages(activePlayer){
 }
 
 function showCard(activePlayer, cardNo){
-    console.log(activePlayer);
+ 
     if (activePlayer['score'] <= 21){
         hitSound.play();
         let cardImage = document.createElement('img');
@@ -296,8 +297,7 @@ async function dealerLogic(){
 
 function computeWinner(){
     let winner;
-    console.log(YOU['score']);
-    console.log(DEALER['score']);
+    
     if (YOU['score']<=21){
         if (YOU['score']> DEALER['score'] || DEALER['score']>21){
             backjackGame['wins']++;
